@@ -1,0 +1,62 @@
+# .NET Framework specific
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio specific
+.vs/
+.vscode/
+.vscode-test/
+
+# Rider IDE specific
+.idea/
+
+# Backup & hidden files
+*_Backup*/ 
+*~ 
+*.swp
+*.bak
+*.tmp
+
+# NuGet packages
+*.nupkg
+# Include if you have the nuget's packagestore here.
+packages/
+
+# Include if you have the NuGet cache globally.
+# .nuget/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Include the directory itself even if it is empty.
+!.vs/keep
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Entity Framework
+*.edmx.sql
+*.designer.cs
+*.edmx.diagram
+
+# Code Analysis results
+*.ruleset
+
+# Resharper
+_ReSharper*/
