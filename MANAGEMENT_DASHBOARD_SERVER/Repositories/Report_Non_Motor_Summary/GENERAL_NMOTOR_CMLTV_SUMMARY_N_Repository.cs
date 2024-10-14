@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.Report_Non_Motor_Summary
+{
+    public class GENERAL_NMOTOR_CMLTV_SUMMARY_N_Repository
+    {
+    }
+}
