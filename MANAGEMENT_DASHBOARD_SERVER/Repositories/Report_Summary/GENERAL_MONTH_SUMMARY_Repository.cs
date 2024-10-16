@@ -1,12 +1,10 @@
 ﻿using Dapper;
 using Dapper.Oracle;
-using MANAGEMENT_DASHBOARD_SERVER.Models;
+using MANAGEMENT_DASHBOARD_SERVER.Models.Report_Summary;
 using Oracle.ManagedDataAccess.Client;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 
 namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.Report_Summary
 {
@@ -19,7 +17,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.Report_Summary
             _connectionString = connectionString;
         }
 
-        public List<SummaryDetail> CallStoredProcedure(int month)
+        public List<GeneralKpi> CallStoredProcedure(int month) // The return type should be GeneralKPI List
         {
             using (var conn = new OracleConnection(_connectionString))
             {
@@ -29,8 +27,8 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.Report_Summary
                 parameters.Add("p_month", month, (OracleMappingType?)OracleDbType.Int32, ParameterDirection.Input);
 
                 // Execute the stored procedure and map the result to the MotorPerformanceData model
-                var result = conn.Query<SummaryDetail>(
-                    "SLIC_AGENT.GENERAL_GENERAL_PERF_BRCMLTV",
+                var result = conn.Query<GeneralKpi>(
+                    "SLIC_AGENT.GENERAL_MONTH_SUMMARY",
                     parameters,
                     commandType: CommandType.StoredProcedure).ToList();
 

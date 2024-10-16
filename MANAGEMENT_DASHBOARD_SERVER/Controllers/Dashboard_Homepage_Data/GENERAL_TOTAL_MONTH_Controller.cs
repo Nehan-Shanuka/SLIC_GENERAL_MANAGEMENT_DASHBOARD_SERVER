@@ -20,7 +20,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers.Dashboard_Homepage_Data
         }
 
         [HttpGet]
-        [Route("api/GENERAL_TOTAL_MONTH")]
+        [Route("api/Get_GENERAL_TOTAL_MONTH")]
         public IHttpActionResult GetMotorPerformanceData([FromUri] int month)
         {
             try

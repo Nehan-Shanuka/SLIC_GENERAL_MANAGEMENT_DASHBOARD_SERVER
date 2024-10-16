@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using Dapper;
 using Dapper.Oracle;
-using MANAGEMENT_DASHBOARD_SERVER;
+using MANAGEMENT_DASHBOARD_SERVER.Models.Performance_Ranking_Region_Branch;
 using Oracle.ManagedDataAccess.Client;
 
 public class GENERAL_MOTOR_PERF_BRCMLTV_Repository
@@ -15,17 +15,17 @@ public class GENERAL_MOTOR_PERF_BRCMLTV_Repository
         _connectionString = connectionString;
     }
 
-    public List<BRANCH_TEMPLATE_FOR_BRANCH_RANK> CallStoredProcedure(int month)
+    public List<GeneralBranchPerformanceRank> CallStoredProcedure(int month)
     {
         using (var conn = new OracleConnection(_connectionString))
         {
             // Define the input and output parameters
             var parameters = new OracleDynamicParameters();
-            parameters.Add("p_recordset", dbType: (OracleMappingType?)OracleDbType.RefCursor, direction: ParameterDirection.Output);
-            parameters.Add("p_month", month, (OracleMappingType?)OracleDbType.Int32, ParameterDirection.Input);
+            parameters.Add("p_recordset", dbType: OracleMappingType.RefCursor, direction: ParameterDirection.Output);
+            parameters.Add("p_month", month, OracleMappingType.Int32, ParameterDirection.Input);
 
             // Execute the stored procedure and map the result to the MotorPerformanceData model
-            var result = conn.Query<BRANCH_TEMPLATE_FOR_BRANCH_RANK>(
+            var result = conn.Query<GeneralBranchPerformanceRank>(
                 "SLIC_AGENT.GENERAL_MOTOR_PERF_BRCMLTV",
                 parameters,
                 commandType: CommandType.StoredProcedure).ToList();

@@ -20,13 +20,13 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers.Report_Summary
         }
 
         [HttpGet]
-        [Route("api/GENERAL_MONTH_WISE_SUMMARY")]
-        public IHttpActionResult GetMotorPerformanceData([FromUri] int month)
+        [Route("api/Get_GENERAL_MONTH_WISE_SUMMARY")]
+        public IHttpActionResult GetGenMonthWiseSummary([FromUri] int year)
         {
             try
             {
                 // Call the repository method to get the data
-                var data = _repository.CallStoredProcedure(month);
+                var data = _repository.CallStoredProcedure(year);
 
                 // Return the data as a JSON response
                 return Ok(data);

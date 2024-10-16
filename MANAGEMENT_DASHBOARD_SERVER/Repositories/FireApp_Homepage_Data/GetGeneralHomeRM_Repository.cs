@@ -1,12 +1,11 @@
 ﻿using Dapper;
 using Dapper.Oracle;
 using MANAGEMENT_DASHBOARD_SERVER.Models.FireApp_Homepage_Data;
+using MANAGEMENT_DASHBOARD_SERVER.Models.Report_Summary;
 using Oracle.ManagedDataAccess.Client;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web;
 
 namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.FireApp_Homepage_Data
 {
@@ -25,10 +24,11 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.FireApp_Homepage_Data
             {
                 // Define the input and output parameters
                 var parameters = new OracleDynamicParameters();
-                parameters.Add("p_recordset", dbType: (OracleMappingType?)OracleDbType.RefCursor, direction: ParameterDirection.Output);
-                parameters.Add("p_year", year, (OracleMappingType?)OracleDbType.Varchar2, ParameterDirection.Input);
-                parameters.Add("p_month", month, (OracleMappingType?)OracleDbType.Varchar2, ParameterDirection.Input);
-                parameters.Add("p_region", region, (OracleMappingType?)OracleDbType.Varchar2, ParameterDirection.Input);
+                parameters.Add("p_recordset", dbType: OracleMappingType.RefCursor, direction: ParameterDirection.Output);
+                parameters.Add("p_year", year, OracleMappingType.Varchar2, ParameterDirection.Input);
+                parameters.Add("p_month", month, OracleMappingType.Varchar2, ParameterDirection.Input);
+                parameters.Add("p_region", region, OracleMappingType.Varchar2, ParameterDirection.Input);
+
 
                 // Execute the stored procedure and map the result to the respective model
                 var result = conn.Query<GeneralRegionalSummary>(
@@ -40,7 +40,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.FireApp_Homepage_Data
             }
         }
 
-        public List<GeneralKPI> CallStoredProcedureGetKpiMonthRMData(string p_month, string p_region)
+        public List<GeneralKpi> CallStoredProcedureGetKpiMonthRMData(string p_month, string p_region)
         {
             using (var conn = new OracleConnection(_connectionString))
             {
@@ -51,7 +51,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories.FireApp_Homepage_Data
                 parameters.Add("p_region", p_region, (OracleMappingType?)OracleDbType.Varchar2, ParameterDirection.Input);
 
                 // Execute the stored procedure and map the result to the respective model
-                var result = conn.Query<GeneralKPI>(
+                var result = conn.Query<GeneralKpi>(
                     "SLIC_RMBM.KPI_MONTH_RM",
                     parameters,
                     commandType: CommandType.StoredProcedure).ToList();

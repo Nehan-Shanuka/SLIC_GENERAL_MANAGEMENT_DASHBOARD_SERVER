@@ -26,7 +26,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers
         [AllowAnonymous]
         public IHttpActionResult Test()
         {
-            Debug.WriteLine("TEST_4");
+            //Debug.WriteLine("TEST_4");
             return Ok("Pass");
         }
 
@@ -48,7 +48,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers
         [AllowAnonymous]
         public IHttpActionResult Login([FromBody] LoginRequest loginRequest)
         {
-            Debug.WriteLine("TEST_3");
+            //Debug.WriteLine("TEST_3");
             var token = _authService.Authenticate(loginRequest.USERNAME, loginRequest.PASSWORD);
             if (token == null)
                 return Unauthorized();
@@ -63,7 +63,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers
         {
             try
             {
-                Debug.WriteLine("ENTER_UpdatePassword");
+                //Debug.WriteLine("ENTER_UpdatePassword");
 
                 if (request == null)
                     return BadRequest("Invalid request payload.");

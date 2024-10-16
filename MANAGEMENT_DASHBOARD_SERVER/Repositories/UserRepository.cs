@@ -1,25 +1,20 @@
 ﻿using Dapper;
-using Dapper.Oracle;
 using MANAGEMENT_DASHBOARD_SERVER.Models;
 using Oracle.ManagedDataAccess.Client;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Web;
 
 namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
 {
     public class UserRepository
     {
-        private readonly string _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["OracleDbConnection"].ConnectionString;
+        private readonly string _connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["dbCon"].ConnectionString;
 
         public User GetUserByUsername(string username)
         {
             using (IDbConnection conn = new OracleConnection(_connectionString))
             {
-                var query = "SELECT * FROM NEHAN.USER_DETAILS WHERE USERNAME = :USERNAME";
+                var query = "SELECT * FROM SLIC_AGENT.MGT_DASHBOARD_USERS WHERE USERNAME = :USERNAME";
                 Debug.WriteLine(username);
                 return conn.QuerySingleOrDefault<User>(query, new { USERNAME = username });
             }
@@ -29,7 +24,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
         {
             using (IDbConnection conn = new OracleConnection(_connectionString))
             {
-                var query = "SELECT USERNAME FROM NEHAN.USER_DETAILS WHERE USERNAME = :USERNAME";
+                var query = "SELECT USERNAME FROM SLIC_AGENT.MGT_DASHBOARD_USERS WHERE USERNAME = :USERNAME";
                 Debug.WriteLine(username);
                 return conn.QuerySingleOrDefault<User>(query, new { USERNAME = username });
             }
@@ -40,7 +35,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
             using (IDbConnection conn = new OracleConnection(_connectionString))
             {
                 var query = @"
-            INSERT INTO NEHAN.USER_DETAILS (USER_ID, USERNAME, PASSWORD, NAME, CONTACT_NO, CATOGERY)
+            INSERT INTO SLIC_AGENT.MGT_DASHBOARD_USERS (USER_ID, USERNAME, PASSWORD, NAME, CONTACT_NO, CATOGERY)
             VALUES (:USER_ID, :USERNAME, :PASSWORD, :NAME, :CONTACT_NO, :CATOGERY)";
 
                 conn.Execute(query, user);
@@ -53,7 +48,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
             using (IDbConnection conn = new OracleConnection(_connectionString))
             {
                 var query = @"
-                            UPDATE NEHAN.USER_DETAILS
+                            UPDATE SLIC_AGENT.MGT_DASHBOARD_USERS
                             SET PASSWORD = :PASSWORD, UPDATED_AT = :UPDATED_AT
                             WHERE USERNAME = :USERNAME";
 

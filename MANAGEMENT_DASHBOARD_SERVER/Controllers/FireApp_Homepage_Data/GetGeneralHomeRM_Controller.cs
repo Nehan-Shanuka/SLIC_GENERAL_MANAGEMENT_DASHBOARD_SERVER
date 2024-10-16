@@ -1,4 +1,5 @@
 ﻿using MANAGEMENT_DASHBOARD_SERVER.Models;
+using MANAGEMENT_DASHBOARD_SERVER.Models.FireApp_Homepage_Data;
 using MANAGEMENT_DASHBOARD_SERVER.Repositories;
 using MANAGEMENT_DASHBOARD_SERVER.Repositories.FireApp_Homepage_Data;
 using System;

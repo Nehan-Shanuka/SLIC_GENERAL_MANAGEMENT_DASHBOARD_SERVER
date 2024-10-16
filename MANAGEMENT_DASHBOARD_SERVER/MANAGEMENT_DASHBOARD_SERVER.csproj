@@ -247,16 +247,31 @@
     <Compile Include="Controllers\Report_Summary\GENERAL_MONTH_SUMMARY_Controller.cs" />
     <Compile Include="Controllers\Report_Summary\GENERAL_MONTH_WISE_PL_SUMMARY_Controller.cs" />
     <Compile Include="Controllers\Report_Summary\GENERAL_MONTH_WISE_SUMMARY_Controller.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Middlewares\JwtAuthHandlers.cs" />
-    <Compile Include="Models\BasicKPI.cs" />
-    <Compile Include="Models\BRANCH_TEMPLATE_FOR_BRANCH_RANK.cs" />
-    <Compile Include="Models\GeneralKPI.cs" />
+    <Compile Include="Models\Report_Summary\BasicKpi.cs" />
+    <Compile Include="Models\Performance_Ranking_Region_Branch\GeneralBranchPerformanceRank.cs" />
+    <Compile Include="Models\Report_Channel\ChPerformance.cs" />
+    <Compile Include="Models\FireApp_Homepage_Data\GeneralAmpDataRM.cs" />
+    <Compile Include="Models\FireApp_Homepage_Data\GeneralHomeDataRM.cs" />
+    <Compile Include="Models\FireApp_Homepage_Data\GeneralNewRecruitmentRM.cs" />
+    <Compile Include="Models\FireApp_Homepage_Data\GeneralRegionalSummary.cs" />
+    <Compile Include="Models\FireApp_Homepage_Data\GenTarAchChartCumuData.cs" />
+    <Compile Include="Models\FireApp_Regional_Class_Summary\NonMotorClassBMData.cs" />
+    <Compile Include="Models\FireApp_Regional_Class_Summary\NonMotorClassRMData.cs" />
+    <Compile Include="Models\FireApp_Regional_Due_Summary\GeneralRegionalSummary.cs" />
+    <Compile Include="Models\FireApp_Regional_Due_Summary\MotorBranchDueListForRmData.cs" />
+    <Compile Include="Models\Report_Summary\GeneralKpi.cs" />
+    <Compile Include="Models\Performance_Ranking_Region_Branch\GeneralRegionalPerformanceRank.cs" />
+    <Compile Include="Models\FireApp_RM_Detail\GeneralRmBmDetailsData.cs" />
     <Compile Include="Models\LoginTemplates.cs" />
-    <Compile Include="Models\SummaryDetail.cs" />
+    <Compile Include="Models\Report_Non_Motor_Summary\NonMotorSummary.cs" />
+    <Compile Include="Models\Report_Annual_Ranking\GeneralAnnualAward.cs" />
+    <Compile Include="Models\Report_Annual_Ranking\GeneralAnnualAwardRankingBMData.cs" />
+    <Compile Include="Models\Report_Annual_Ranking\GeneralAnnualAwardRankingRMData.cs" />
+    <Compile Include="Models\Report_Channel\TotalGwp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Dashboard_Homepage_Data\GENERAL_TOTAL_CUMULATIVE_Repository.cs" />
     <Compile Include="Repositories\Dashboard_Homepage_Data\GENERAL_TOTAL_MONTH_Repository.cs" />

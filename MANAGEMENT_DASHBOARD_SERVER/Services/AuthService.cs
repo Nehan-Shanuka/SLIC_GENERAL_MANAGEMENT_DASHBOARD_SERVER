@@ -70,7 +70,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
         public string Authenticate(string username, string password)
         {
             var user = _userRepository.GetUserByUsername(username);
-            Debug.WriteLine(user);
+            //Debug.WriteLine(user);
 
             // Implement password verification logic (e.g., hashing comparison)
             if (!_passwordService.VerifyPassword(password, user.PASSWORD)) // Simplified for demo
@@ -85,12 +85,12 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
 
         public void UpdatePassword(string username, string oldPassword, string newPassword)
         {
-            Debug.WriteLine("TEST_UP_1");
+            //Debug.WriteLine("TEST_UP_1");
             // Validate inputs.
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(oldPassword) || string.IsNullOrWhiteSpace(newPassword))
                 throw new ArgumentException("All fields are required.");
 
-            Debug.WriteLine("TEST_UP_2");
+            //Debug.WriteLine("TEST_UP_2");
 
             // Retrieve the user from the database.
             var user = _userRepository.GetUserByUsername(username);
@@ -99,7 +99,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
                 throw new ArgumentException("User not found.");
             }
 
-            Debug.WriteLine("TEST_UP_3");
+            //Debug.WriteLine("TEST_UP_3");
 
             // Verify that the old password is correct.
             bool isOldPasswordValid = _passwordService.VerifyPassword(oldPassword, user.PASSWORD);
@@ -108,24 +108,24 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
                 throw new ArgumentException("The old password is incorrect.");
             }
 
-            Debug.WriteLine("TEST_UP_4");
+            //Debug.WriteLine("TEST_UP_4");
 
             // Hash the new password.
             string hashedNewPassword = _passwordService.HashPassword(newPassword);
 
-            Debug.WriteLine("TEST_UP_5");
+            //Debug.WriteLine("TEST_UP_5");
 
             // Update the user's password in the database.
             user.PASSWORD = hashedNewPassword;
             //user.UPDATED_AT = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Update the timestamp for tracking.
 
-            Debug.WriteLine("TEST_UP_6");
+            //Debug.WriteLine("TEST_UP_6");
 
             // Update the user in the database using the repository.
             _userRepository.UpdateUserPassword(user);
 
             // Optional: Log the password change event or send a notification.
-            Console.WriteLine("Password successfully updated.");
+            //Console.WriteLine("Password successfully updated.");
         }
 
         //private bool VerifyPassword(string inputPassword, string storedHashedPassword)
@@ -149,9 +149,9 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
             // Create claims for the token
             var claims = new[]
             {
-        new Claim(ClaimTypes.Name, user.USERNAME),
-        new Claim(ClaimTypes.Role, user.CATOGERY.ToString()) // Role as a string
-    };
+                new Claim(ClaimTypes.Name, user.USERNAME),
+                new Claim(ClaimTypes.Role, user.CATOGERY.ToString()) // Role as a string
+            };
 
             // Define token descriptor
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -166,17 +166,6 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
 
             // Return the token string
             return tokenHandler.WriteToken(token);
-        }
-
-
-        public static string GenerateRandomKey(int length)
-        {
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                var key = new byte[length];
-                rng.GetBytes(key);
-                return Convert.ToBase64String(key);
-            }
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MANAGEMENT_DASHBOARD_SERVER.Models.FireApp_Regional_Class_Summary
+﻿namespace MANAGEMENT_DASHBOARD_SERVER.Models.FireApp_Regional_Class_Summary
 {
     public class NonMotorClassBMData
     {
