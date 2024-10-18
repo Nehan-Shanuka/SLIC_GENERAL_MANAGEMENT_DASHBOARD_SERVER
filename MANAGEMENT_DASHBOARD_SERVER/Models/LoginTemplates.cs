@@ -23,6 +23,13 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Models
         public string PASSWORD { get; set; }
     }
 
+    public class LoginResult
+    {
+        public string ACCESS_TOKEN { get; set; }
+        public string USERNAME { get; set; }
+        public int CATOGERY { get; set; }
+    }
+
     public class UserRequest
     {
         public int USER_ID { get; set; }

@@ -67,7 +67,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
             return newUser;
         }
 
-        public string Authenticate(string username, string password)
+        public LoginResult Authenticate(string username, string password)
         {
             var user = _userRepository.GetUserByUsername(username);
             //Debug.WriteLine(user);
@@ -79,8 +79,15 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Services
             if (user == null)
                 return null;
 
+            var result = new LoginResult
+            {
+                ACCESS_TOKEN = GenerateJwtToken(user),
+                USERNAME = user.USERNAME,
+                CATOGERY = user.CATOGERY
+            };
+
             // Generate JWT token
-            return GenerateJwtToken(user);
+            return result;
         }
 
         public void UpdatePassword(string username, string oldPassword, string newPassword)

@@ -49,11 +49,11 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Controllers
         public IHttpActionResult Login([FromBody] LoginRequest loginRequest)
         {
             //Debug.WriteLine("TEST_3");
-            var token = _authService.Authenticate(loginRequest.USERNAME, loginRequest.PASSWORD);
-            if (token == null)
+            var loginResult = _authService.Authenticate(loginRequest.USERNAME, loginRequest.PASSWORD);
+            if (loginResult.ACCESS_TOKEN == null)
                 return Unauthorized();
 
-            return Ok(new { Token = token });
+            return Ok(loginResult);
         }
 
         [HttpPut]

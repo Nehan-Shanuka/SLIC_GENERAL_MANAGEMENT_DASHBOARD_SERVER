@@ -35,8 +35,8 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
             using (IDbConnection conn = new OracleConnection(_connectionString))
             {
                 var query = @"
-            INSERT INTO SLIC_AGENT.MGT_DASHBOARD_USERS (USER_ID, USERNAME, PASSWORD, NAME, CONTACT_NO, CATOGERY)
-            VALUES (:USER_ID, :USERNAME, :PASSWORD, :NAME, :CONTACT_NO, :CATOGERY)";
+                            INSERT INTO SLIC_AGENT.MGT_DASHBOARD_USERS (USER_ID, USERNAME, PASSWORD, NAME, CONTACT_NO, CATOGERY)
+                            VALUES (:USER_ID, :USERNAME, :PASSWORD, :NAME, :CONTACT_NO, :CATOGERY)";
 
                 conn.Execute(query, user);
 
