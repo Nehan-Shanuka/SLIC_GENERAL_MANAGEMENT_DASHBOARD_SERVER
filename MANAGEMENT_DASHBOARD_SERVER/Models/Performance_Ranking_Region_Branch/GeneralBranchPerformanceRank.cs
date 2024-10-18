@@ -2,13 +2,13 @@
 {
     public class GeneralBranchPerformanceRank
     {
-        public int Rank { get; set; }
+        public int RANK { get; set; }
         public string BRANCH_NAME { get; set; }
-        public double Last_Year { get; set; }
-        public double Achievement { get; set; }
-        public double Target { get; set; }
-        public double Ach_presentage { get; set; }
-        public double Growth_presentage { get; set; }
+        public double LAST_YEAR { get; set; }
+        public double ACHIEVEMENT { get; set; }
+        public double TARGET { get; set; }
+        public double ACH_PRESENTAGE { get; set; }
+        public double GROWTH_PRESENTAGE { get; set; }
     }
 }
 
