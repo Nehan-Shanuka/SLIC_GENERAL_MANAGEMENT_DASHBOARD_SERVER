@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using Dapper.Oracle;
-using MANAGEMENT_DASHBOARD_SERVER.Models.Report_Summary;
+using MANAGEMENT_DASHBOARD_SERVER.Models.Performance_Ranking_Region_Branch;
 using Oracle.ManagedDataAccess.Client;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +17,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
             _connectionString = connectionString;
         }
 
-        public List<GeneralKpi> CallStoredProcedure(int month)
+        public List<GeneralBranchPerformanceRank> CallStoredProcedure(int month)
         {
             using (var conn = new OracleConnection(_connectionString))
             {
@@ -27,7 +27,7 @@ namespace MANAGEMENT_DASHBOARD_SERVER.Repositories
                 parameters.Add("p_month", month, OracleMappingType.Int32, ParameterDirection.Input);
 
                 // Execute the stored procedure and map the result to the respective model
-                var result = conn.Query<GeneralKpi>(
+                var result = conn.Query<GeneralBranchPerformanceRank>(
                     "SLIC_AGENT.GENERAL_NMOTOR_PERF_BRMONTH",
                     parameters,
                     commandType: CommandType.StoredProcedure).ToList();
